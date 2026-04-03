@@ -53,7 +53,7 @@ async function loadCategories() {
     }
 }
 
-/** Get jokes from one category and make elements for them */
+/** Get jokes from one category and make elements for them, clear out old ones */
 async function fetchCategoryJokes(category) {
     const title = document.getElementById('current-category-title');
     const container = document.getElementById('jokes-container');
@@ -70,7 +70,7 @@ async function fetchCategoryJokes(category) {
         const jokes = await response.json();
 
         title.textContent = `Jokes in: ${category}`;
-        container.innerHTML = ''; // Clear out the old jokes
+        container.innerHTML = '';
 
         jokes.forEach(joke => {
             const jokeDiv = document.createElement('div');
