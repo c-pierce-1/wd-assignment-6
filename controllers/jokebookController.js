@@ -1,7 +1,7 @@
 "use strict";
 const Model = require('../models/jokebookModel');
 
-exports.getCategories = async (requestAnimationFrame, res) => {
+exports.getCategories = async (req, res) => {
     try {
         const categories = await Model.getCategories();
         res.json(categories);
@@ -12,7 +12,7 @@ exports.getCategories = async (requestAnimationFrame, res) => {
 
 exports.getJokesByCategory = async (req, res) => {
     const category = req.params.category;
-    const limit = req.query.limit;
+    const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
 
     try {
         const jokes = await Model.getJokesByCategory(category, limit);
@@ -22,9 +22,19 @@ exports.getJokesByCategory = async (req, res) => {
         }
         res.json(jokes);
     } catch (err) {
+        console.error("DATABASE ERROR:", err);
         res.status(500).json({ error: "Failed to fetch jokes"});
     }
 };
+
+exports.getRandomJoke = async(req, res)=>{
+    try{
+        const joke = await Model.getRandomJoke();
+        res.json(joke);
+    } catch (err) {
+        res.status(500).json({error: "Failed to fetch random joke"});
+    }
+}
 
 exports.addJoke = async(req,res) => {
     const { category, setup, delivery} = req.body;

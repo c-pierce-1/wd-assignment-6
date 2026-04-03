@@ -1,14 +1,54 @@
 <!DOCTYPE html>
+<!--
+  Name: Charles Pierce
+  Date: 04.02.2025
+  CSC 372-01
+
+  This is the index.html page for the jokebook assignment
+-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
+    <section id="random-joke-section">
+        <h1 id="title">Jokebook</h1>
+        <h2>Random Joke</h2>
+        <div id="random-joke-container">Loading...</div>
+    </section>
+    <hr>
 
+    <section id="controls-section">
+        <h2>Categories</h2>
+        <div id="category-buttons"></div> <br>
+
+        <label for="search-category">Search Category:</label>
+        <input type="text" id="search-category" placeholder="e.g. funnyJoke">
+        <button id="search-btn">Search</button>
+    </section>
+
+    <section id="category-results-section">
+        <h2 id="current-category-title">Select a category</h2>
+        <div id="jokes-container"></div>
+    </section>
+
+    <hr>
+
+    <section id="add-joke-section">
+        <h2>Add New Joke</h2>
+        <form id="add-joke-form">
+            <input type="text" id="new-category" placeholder="Category" required>
+            <input type="text" id="new-setup" placeholder="Setup" required>
+            <input type="text" id="new-delivery" placeholder="Delivery" required>
+            <button type="submit">Submit Joke</button>
+        </form>
+    </section>
 </body>
 
 </html>

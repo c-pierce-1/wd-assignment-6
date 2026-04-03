@@ -13,11 +13,11 @@ exports.getCategories = async () => {
 }
 
 exports.getJokesByCategory = async (category, limit) => {
-    let query = ' SELECT j.setup, j.delivery FROM jokes j JOIN categories c ON j.category_id = c.id WHERE c.name = $1';
+    let query = ` SELECT j.setup, j.delivery FROM jokes j JOIN categories c ON j.category_id = c.id WHERE c.name = $1`;
     let params = [category];
 
     if (limit) {
-        query += 'LIMIT $2';
+        query += ' LIMIT $2';
         params.push(limit);
     }
 
